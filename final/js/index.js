@@ -20,17 +20,18 @@ for (var i = 1; i <= 520; i++) {
     poker[r] = t;
 }
 
-// 取前五張
 for (var i = 0; i < 10; i++) {
     card.push(poker[i]);
 }
 var i = 0;
 var count = 0;
+var count1 = 0;
 
-$('#deal').on('click', function() {
+
+$('#ask').on('click', function() {
 
     $img = $('<img>').attr('src', './poker/pic' + card[i] + '.png');
-    $col = $('<div>').attr('class', 'col-2 text-center').append($img);
+    $col = $('<div>').attr('class', 'col-1 text-center').append($img);
     $('#data').append($col);
 
 
@@ -53,17 +54,22 @@ $('#deal').on('click', function() {
 $('#stop').on('click', function() {
 
     $img = $('<img>').attr('src', './poker/pic' + card[i] + '.png');
-    $col = $('<div>').attr('class', 'col-2 text-center').append($img);
-    $('#data').append($col);
+    $col = $('<div>').attr('class', 'col-1 text-center').append($img);
+    $('#data1').append($col);
 
 
     var c = card[i] - 1;
     point = Math.floor(c / 4) + 1;
-    count = count + point;
-    $('#count').val(count);
+    if (point > 10) {
+        point = 10;
+    }
+    count1 = count1 + point;
+    $('#count1').val(count1);
     i++;
-
-    if (count > 21) {
-        $('#count').val("YOU LOOSE!!!");
+    if (count1 == 21) {
+        $('#count1').val("BLACK JACK!!!");
+    }
+    if (count1 > 21) {
+        $('#count1').val("YOU LOOSE!!!");
     }
 });
