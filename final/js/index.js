@@ -114,7 +114,7 @@ $('#start').on('click', function() {
         win++;
     }
     if (count > 21) {
-        $('#result').val("YOU LOOSE!!!");
+        $('#result').val("YOU LOSE!!!");
         lose++;
     }
     $('#win').val(win);
@@ -151,7 +151,7 @@ $('#ask').on('click', function() {
     }
     if (count > 21) {
         if (ace == 0) {
-            $('#result').val("YOU LOOSE!!!");
+            $('#result').val("YOU LOSE!!!");
             lose++;
         } else if (ace == 1) {
             count -= 10;
@@ -176,6 +176,10 @@ $('#stop').on('click', function() {
     $img = $('<img>').attr('src', './poker/pic' + card[3] + '.png');
     $col = $('<div>').attr('class', 'col-1 text-center').append($img);
     $('#data1').append($col);
+    if (count1 == 21) {
+        $('#result').val("YOU LOSE!!!");
+        lose++;
+    }
     while (count1 < 17) {
         $img = $('<img>').attr('src', './poker/pic' + card[i] + '.png');
         $col = $('<div>').attr('class', 'col-1 text-center').append($img);
