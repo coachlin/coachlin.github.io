@@ -29,6 +29,9 @@ var count = 0;
 var count1 = 0;
 var ace = 0;
 var ace1 = 0;
+var win = 0,
+    lose = 0,
+    tie = 0;
 
 $('#start').on('click', function() {
     document.getElementById('data1').innerHTML = "";
@@ -109,10 +112,15 @@ $('#start').on('click', function() {
     i++;
     if (count == 21) {
         $('#result').val("BLACK JACK!!!");
+        win++;
     }
     if (count > 21) {
         $('#result').val("YOU LOOSE!!!");
+        lose++;
     }
+    $('#win').val(win);
+    $('#lose').val(lose);
+    $('#tie').val(tie);
 });
 
 $('#ask').on('click', function() {
@@ -155,8 +163,11 @@ $('#ask').on('click', function() {
     }
     if (i == 7 && count < 21) {
         $('#result').val("YOU WIN!!!");
+        win++;
     }
-
+    $('#win').val(win);
+    $('#lose').val(lose);
+    $('#tie').val(tie);
 });
 
 $('#stop').on('click', function() {
@@ -193,14 +204,17 @@ $('#stop').on('click', function() {
     if (count1 > count && count1 <= 21) {
         $('#count').val(count + "<" + count1);
         $('#result').val("YOU LOSE!!!");
+        lose++;
     }
     if (count1 < count && count <= 21) {
         $('#count').val(count + ">" + count1);
         $('#result').val("YOU WIN!!!");
+        win++;
     }
     if (count1 > 21) {
         if (ace1 == 0) {
             $('#result').val("YOU WIN!!!");
+            win++;
         } else if (ace1 == 1) {
             count1 -= 10;
             ace1 = ace1 - 1;
@@ -209,13 +223,46 @@ $('#stop').on('click', function() {
     if (count1 == count) {
         $('#count').val(count + "=" + count1);
         $('#result').val("Tie Game");
+        tie++;
     }
-
+    $('#win').val(win);
+    $('#lose').val(lose);
+    $('#tie').val(tie);
 });
 
+$('#next').on('click', function() {
+    document.getElementById('data1').innerHTML = "";
+    document.getElementById('data').innerHTML = "";
+    document.getElementById('count').innerHTML = "";
+    document.getElementById('result').innerHTML = "";
+    count = 0;
+    count1 = 0;
+    $('#count').val(count);
+    $('#data').empty();
+    card = [];
+    var poker = [];
+    for (var i = 1; i <= 52; i++) {
+        poker.push(i);
+    }
 
+    // 洗牌
+    for (var i = 1; i <= 520; i++) {
+        var r = rand(1, 52) - 1;
+        var t = poker[0];
+        poker[0] = poker[r];
+        poker[r] = t;
+    }
+
+    for (var i = 0; i < 10; i++) {
+        card.push(poker[i]);
+    }
+    i = 3;
+});
 
 $('#reset').on('click', function() {
     window.location.reload();
 });
 $('#count').val(count);
+$('#win').val(win);
+$('#lose').val(lose);
+$('#tie').val(tie);
