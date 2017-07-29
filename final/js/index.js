@@ -21,10 +21,9 @@ for (var i = 1; i <= 520; i++) {
     poker[r] = t;
 }
 
-for (var i = 0; i < 10; i++) {
+for (var i = 0; i < 52; i++) {
     card.push(poker[i]);
 }
-var i = 3;
 var count = 0;
 var count1 = 0;
 var ace = 0;
@@ -32,6 +31,7 @@ var ace1 = 0;
 var win = 0,
     lose = 0,
     tie = 0;
+var i = 4;
 
 $('#start').on('click', function() {
     document.getElementById('data1').innerHTML = "";
@@ -109,7 +109,6 @@ $('#start').on('click', function() {
     count1 = count1 + point2;
     $('#count').val(count);
 
-    i++;
     if (count == 21) {
         $('#result').val("BLACK JACK!!!");
         win++;
@@ -124,7 +123,6 @@ $('#start').on('click', function() {
 });
 
 $('#ask').on('click', function() {
-
     $img = $('<img>').attr('src', './poker/pic' + card[i] + '.png');
     $col = $('<div>').attr('class', 'col-1 text-center').append($img);
     $('#data').append($col);
@@ -148,7 +146,7 @@ $('#ask').on('click', function() {
     $('#count').val(count);
     i++;
     if (count == 21) {
-        $('#result').val("BLACK JACK!!!");
+        $('#result').val("YOU WIN!!!");
         win++;
     }
     if (count > 21) {
@@ -253,10 +251,10 @@ $('#next').on('click', function() {
         poker[r] = t;
     }
 
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 52; i++) {
         card.push(poker[i]);
     }
-    i = 3;
+    i = 4;
 });
 
 $('#reset').on('click', function() {
