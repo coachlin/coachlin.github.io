@@ -22,6 +22,12 @@ div.item {
     width: 40px;
 }
 
+.btn-block {
+    color: #fff;
+    background-color: #000;
+    border-color: #000;
+}
+
 #data {
     height: auto;
     min-height: 50px;

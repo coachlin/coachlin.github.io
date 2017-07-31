@@ -24,6 +24,11 @@ for (var i = 1; i <= 520; i++) {
 for (var i = 0; i < 52; i++) {
     card.push(poker[i]);
 }
+
+$('#go').on('click', function() {
+    window.location.href = "./game.html";
+});
+
 var count = 0;
 var count1 = 0;
 var ace = 0;
