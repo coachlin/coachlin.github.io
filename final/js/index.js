@@ -29,6 +29,10 @@ $('#go').on('click', function() {
     window.location.href = "./game.html";
 });
 
+$('#back').on('click', function() {
+    window.location.href = "./index.html";
+});
+
 var count = 0;
 var count1 = 0;
 var ace = 0;
