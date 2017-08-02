@@ -43,6 +43,9 @@ var win = 0,
 var i = 4;
 
 $('#start').on('click', function() {
+
+    document.getElementById('start').disabled = true;
+
     document.getElementById('data1').innerHTML = "";
     $img = $('<img>').attr('src', './poker/pic' + card[0] + '.png');
     $col = $('<div>').attr('class', 'col-1 text-center').append($img);
@@ -157,11 +160,15 @@ $('#ask').on('click', function() {
     if (count == 21) {
         $('#result').val("YOU WIN!!!");
         win++;
+        document.getElementById('ask').disabled = true;
+        document.getElementById('stop').disabled = true;
     }
     if (count > 21) {
         if (ace == 0) {
             $('#result').val("YOU LOSE!!!");
             lose++;
+            document.getElementById('ask').disabled = true;
+            document.getElementById('stop').disabled = true;
         } else if (ace == 1) {
             count -= 10;
             $('#count').val(count);
@@ -171,6 +178,8 @@ $('#ask').on('click', function() {
     if (i == 7 && count < 21) {
         $('#result').val("YOU WIN!!!");
         win++;
+        document.getElementById('ask').disabled = true;
+        document.getElementById('stop').disabled = true;
     }
     $('#win').val(win);
     $('#lose').val(lose);
@@ -178,6 +187,10 @@ $('#ask').on('click', function() {
 });
 
 $('#stop').on('click', function() {
+
+    document.getElementById('ask').disabled = true;
+    document.getElementById('stop').disabled = true;
+
     document.getElementById('data1').innerHTML = "";
     $img = $('<img>').attr('src', './poker/pic' + card[1] + '.png');
     $col = $('<div>').attr('class', 'col-1 text-center').append($img);
@@ -242,6 +255,11 @@ $('#stop').on('click', function() {
 });
 
 $('#next').on('click', function() {
+
+    document.getElementById('start').disabled = false;
+    document.getElementById('ask').disabled = false;
+    document.getElementById('stop').disabled = false;
+
     document.getElementById('data1').innerHTML = "";
     document.getElementById('data').innerHTML = "";
     document.getElementById('count').innerHTML = "";
